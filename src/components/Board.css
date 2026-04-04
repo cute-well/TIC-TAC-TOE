@@ -1,0 +1,59 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cell {
+  aspect-ratio: 1;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  border: 2px solid #4a5568;
+  border-radius: 12px;
+  background: #1a202c;
+  color: #e2e8f0;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.cell:hover:not(:disabled) {
+  background: #2d3748;
+  transform: scale(1.04);
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell--x {
+  color: #63b3ed;
+}
+
+.cell--o {
+  color: #fc8181;
+}
+
+.cell--winner {
+  background: #2f855a;
+  border-color: #48bb78;
+  color: #f0fff4;
+}
+
+.status {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0.75rem 0;
+  min-height: 1.8rem;
+}
+
+.status--win {
+  color: #68d391;
+}
+
+.status--draw {
+  color: #fbd38d;
+}
