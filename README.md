@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# TIC-TAC-TOE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Tic-Tac-Toe game built with **React + TypeScript + Vite**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Classic 3×3 Tic-Tac-Toe gameplay
+- Play **Player vs Player** or **Player vs AI**
+- AI difficulty modes:
+  - `easy` (more random)
+  - `medium` (balanced)
+  - `hard` (minimax, unbeatable)
+- Move history with **time travel** (jump to any previous move)
+- Winning-line highlighting
+- Clear game status and reset flow
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite
+- Vitest + Testing Library
+- ESLint
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1) Install dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm ci
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2) Run in development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### 3) Build for production
+
+```bash
+npm run build
+```
+
+### 4) Preview production build
+
+```bash
+npm run preview
+```
+
+## Scripts
+
+- `npm run dev` — start development server
+- `npm run build` — type-check and build production bundle
+- `npm run preview` — preview built app
+- `npm run lint` — run ESLint
+- `npm test` — run test suite once
+- `npm run test:watch` — run tests in watch mode
+- `npm run test:coverage` — run tests with coverage
+
+## Project Structure
+
+```text
+src/
+  components/
+    Board.tsx
+    MoveHistory.tsx
+  engine/
+    TicTacToeEngine.ts
+    ai.ts
+  test/
+    engine.test.ts
+    ai.test.ts
+  App.tsx
+  main.tsx
+```
+
+## Game Logic Overview
+
+- `TicTacToeEngine` handles:
+  - board state
+  - player turns
+  - winner/draw detection
+  - move validation
+  - reset and snapshot loading for time travel
+- `ai.ts` provides minimax-based move selection with difficulty-based randomness.
+
+## Testing
+
+The project includes automated tests for:
+
+- core engine behavior (moves, winner checks, draw, reset, history)
+- AI move selection and validity across difficulties
+
+Run:
+
+```bash
+npm test
+```
+
+## License
+
+This repository does not currently specify a license.
